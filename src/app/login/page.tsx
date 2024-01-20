@@ -7,8 +7,7 @@ import { redirect } from "next/navigation";
 
 const Login = () => {
   const account = useAccount()
-  if(account.status == "connected")
-      return redirect("/dashboard"); 
+  if(account.status == "connected") return redirect("/dashboard"); 
 
   return (
     <div>

@@ -1,5 +1,5 @@
 import { defineConfig } from '@wagmi/cli'
-import { react } from '@wagmi/cli/plugins'
+import { react, actions } from '@wagmi/cli/plugins'
 import { Abi } from 'viem'
 
 const barberShopAbi = [
@@ -526,7 +526,8 @@ export default defineConfig({
     abi: barberShopAbi as Abi,
   }],
   plugins: [
-    react()
+    react(),
+    actions()
   ],
 })
 

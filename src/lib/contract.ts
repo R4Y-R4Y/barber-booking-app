@@ -5,6 +5,13 @@ import {
   createUseWatchContractEvent,
 } from 'wagmi/codegen'
 
+import {
+  createReadContract,
+  createWriteContract,
+  createSimulateContract,
+  createWatchContractEvent,
+} from 'wagmi/codegen'
+
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 // BarberShop
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -712,6 +719,356 @@ export const useWatchBarberShopStaffRemovedEvent =
  */
 export const useWatchBarberShopStaffUpdatedEvent =
   /*#__PURE__*/ createUseWatchContractEvent({
+    abi: barberShopAbi,
+    address: barberShopAddress,
+    eventName: 'StaffUpdated',
+  })
+
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+// Action
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+/**
+ * Wraps __{@link readContract}__ with `abi` set to __{@link barberShopAbi}__
+ */
+export const readBarberShop = /*#__PURE__*/ createReadContract({
+  abi: barberShopAbi,
+  address: barberShopAddress,
+})
+
+/**
+ * Wraps __{@link readContract}__ with `abi` set to __{@link barberShopAbi}__ and `functionName` set to `"clients"`
+ */
+export const readBarberShopClients = /*#__PURE__*/ createReadContract({
+  abi: barberShopAbi,
+  address: barberShopAddress,
+  functionName: 'clients',
+})
+
+/**
+ * Wraps __{@link readContract}__ with `abi` set to __{@link barberShopAbi}__ and `functionName` set to `"owner"`
+ */
+export const readBarberShopOwner = /*#__PURE__*/ createReadContract({
+  abi: barberShopAbi,
+  address: barberShopAddress,
+  functionName: 'owner',
+})
+
+/**
+ * Wraps __{@link readContract}__ with `abi` set to __{@link barberShopAbi}__ and `functionName` set to `"services"`
+ */
+export const readBarberShopServices = /*#__PURE__*/ createReadContract({
+  abi: barberShopAbi,
+  address: barberShopAddress,
+  functionName: 'services',
+})
+
+/**
+ * Wraps __{@link readContract}__ with `abi` set to __{@link barberShopAbi}__ and `functionName` set to `"staff"`
+ */
+export const readBarberShopStaff = /*#__PURE__*/ createReadContract({
+  abi: barberShopAbi,
+  address: barberShopAddress,
+  functionName: 'staff',
+})
+
+/**
+ * Wraps __{@link readContract}__ with `abi` set to __{@link barberShopAbi}__ and `functionName` set to `"viewService"`
+ */
+export const readBarberShopViewService = /*#__PURE__*/ createReadContract({
+  abi: barberShopAbi,
+  address: barberShopAddress,
+  functionName: 'viewService',
+})
+
+/**
+ * Wraps __{@link readContract}__ with `abi` set to __{@link barberShopAbi}__ and `functionName` set to `"viewStaff"`
+ */
+export const readBarberShopViewStaff = /*#__PURE__*/ createReadContract({
+  abi: barberShopAbi,
+  address: barberShopAddress,
+  functionName: 'viewStaff',
+})
+
+/**
+ * Wraps __{@link writeContract}__ with `abi` set to __{@link barberShopAbi}__
+ */
+export const writeBarberShop = /*#__PURE__*/ createWriteContract({
+  abi: barberShopAbi,
+  address: barberShopAddress,
+})
+
+/**
+ * Wraps __{@link writeContract}__ with `abi` set to __{@link barberShopAbi}__ and `functionName` set to `"addClient"`
+ */
+export const writeBarberShopAddClient = /*#__PURE__*/ createWriteContract({
+  abi: barberShopAbi,
+  address: barberShopAddress,
+  functionName: 'addClient',
+})
+
+/**
+ * Wraps __{@link writeContract}__ with `abi` set to __{@link barberShopAbi}__ and `functionName` set to `"updateClient"`
+ */
+export const writeBarberShopUpdateClient = /*#__PURE__*/ createWriteContract({
+  abi: barberShopAbi,
+  address: barberShopAddress,
+  functionName: 'updateClient',
+})
+
+/**
+ * Wraps __{@link writeContract}__ with `abi` set to __{@link barberShopAbi}__ and `functionName` set to `"removeClient"`
+ */
+export const writeBarberShopRemoveClient = /*#__PURE__*/ createWriteContract({
+  abi: barberShopAbi,
+  address: barberShopAddress,
+  functionName: 'removeClient',
+})
+
+/**
+ * Wraps __{@link writeContract}__ with `abi` set to __{@link barberShopAbi}__ and `functionName` set to `"addStaff"`
+ */
+export const writeBarberShopAddStaff = /*#__PURE__*/ createWriteContract({
+  abi: barberShopAbi,
+  address: barberShopAddress,
+  functionName: 'addStaff',
+})
+
+/**
+ * Wraps __{@link writeContract}__ with `abi` set to __{@link barberShopAbi}__ and `functionName` set to `"updateStaff"`
+ */
+export const writeBarberShopUpdateStaff = /*#__PURE__*/ createWriteContract({
+  abi: barberShopAbi,
+  address: barberShopAddress,
+  functionName: 'updateStaff',
+})
+
+/**
+ * Wraps __{@link writeContract}__ with `abi` set to __{@link barberShopAbi}__ and `functionName` set to `"removeStaff"`
+ */
+export const writeBarberShopRemoveStaff = /*#__PURE__*/ createWriteContract({
+  abi: barberShopAbi,
+  address: barberShopAddress,
+  functionName: 'removeStaff',
+})
+
+/**
+ * Wraps __{@link writeContract}__ with `abi` set to __{@link barberShopAbi}__ and `functionName` set to `"addService"`
+ */
+export const writeBarberShopAddService = /*#__PURE__*/ createWriteContract({
+  abi: barberShopAbi,
+  address: barberShopAddress,
+  functionName: 'addService',
+})
+
+/**
+ * Wraps __{@link writeContract}__ with `abi` set to __{@link barberShopAbi}__ and `functionName` set to `"bookAppointment"`
+ */
+export const writeBarberShopBookAppointment = /*#__PURE__*/ createWriteContract(
+  {
+    abi: barberShopAbi,
+    address: barberShopAddress,
+    functionName: 'bookAppointment',
+  },
+)
+
+/**
+ * Wraps __{@link writeContract}__ with `abi` set to __{@link barberShopAbi}__ and `functionName` set to `"payForAppointment"`
+ */
+export const writeBarberShopPayForAppointment =
+  /*#__PURE__*/ createWriteContract({
+    abi: barberShopAbi,
+    address: barberShopAddress,
+    functionName: 'payForAppointment',
+  })
+
+/**
+ * Wraps __{@link simulateContract}__ with `abi` set to __{@link barberShopAbi}__
+ */
+export const simulateBarberShop = /*#__PURE__*/ createSimulateContract({
+  abi: barberShopAbi,
+  address: barberShopAddress,
+})
+
+/**
+ * Wraps __{@link simulateContract}__ with `abi` set to __{@link barberShopAbi}__ and `functionName` set to `"addClient"`
+ */
+export const simulateBarberShopAddClient = /*#__PURE__*/ createSimulateContract(
+  { abi: barberShopAbi, address: barberShopAddress, functionName: 'addClient' },
+)
+
+/**
+ * Wraps __{@link simulateContract}__ with `abi` set to __{@link barberShopAbi}__ and `functionName` set to `"updateClient"`
+ */
+export const simulateBarberShopUpdateClient =
+  /*#__PURE__*/ createSimulateContract({
+    abi: barberShopAbi,
+    address: barberShopAddress,
+    functionName: 'updateClient',
+  })
+
+/**
+ * Wraps __{@link simulateContract}__ with `abi` set to __{@link barberShopAbi}__ and `functionName` set to `"removeClient"`
+ */
+export const simulateBarberShopRemoveClient =
+  /*#__PURE__*/ createSimulateContract({
+    abi: barberShopAbi,
+    address: barberShopAddress,
+    functionName: 'removeClient',
+  })
+
+/**
+ * Wraps __{@link simulateContract}__ with `abi` set to __{@link barberShopAbi}__ and `functionName` set to `"addStaff"`
+ */
+export const simulateBarberShopAddStaff = /*#__PURE__*/ createSimulateContract({
+  abi: barberShopAbi,
+  address: barberShopAddress,
+  functionName: 'addStaff',
+})
+
+/**
+ * Wraps __{@link simulateContract}__ with `abi` set to __{@link barberShopAbi}__ and `functionName` set to `"updateStaff"`
+ */
+export const simulateBarberShopUpdateStaff =
+  /*#__PURE__*/ createSimulateContract({
+    abi: barberShopAbi,
+    address: barberShopAddress,
+    functionName: 'updateStaff',
+  })
+
+/**
+ * Wraps __{@link simulateContract}__ with `abi` set to __{@link barberShopAbi}__ and `functionName` set to `"removeStaff"`
+ */
+export const simulateBarberShopRemoveStaff =
+  /*#__PURE__*/ createSimulateContract({
+    abi: barberShopAbi,
+    address: barberShopAddress,
+    functionName: 'removeStaff',
+  })
+
+/**
+ * Wraps __{@link simulateContract}__ with `abi` set to __{@link barberShopAbi}__ and `functionName` set to `"addService"`
+ */
+export const simulateBarberShopAddService =
+  /*#__PURE__*/ createSimulateContract({
+    abi: barberShopAbi,
+    address: barberShopAddress,
+    functionName: 'addService',
+  })
+
+/**
+ * Wraps __{@link simulateContract}__ with `abi` set to __{@link barberShopAbi}__ and `functionName` set to `"bookAppointment"`
+ */
+export const simulateBarberShopBookAppointment =
+  /*#__PURE__*/ createSimulateContract({
+    abi: barberShopAbi,
+    address: barberShopAddress,
+    functionName: 'bookAppointment',
+  })
+
+/**
+ * Wraps __{@link simulateContract}__ with `abi` set to __{@link barberShopAbi}__ and `functionName` set to `"payForAppointment"`
+ */
+export const simulateBarberShopPayForAppointment =
+  /*#__PURE__*/ createSimulateContract({
+    abi: barberShopAbi,
+    address: barberShopAddress,
+    functionName: 'payForAppointment',
+  })
+
+/**
+ * Wraps __{@link watchContractEvent}__ with `abi` set to __{@link barberShopAbi}__
+ */
+export const watchBarberShopEvent = /*#__PURE__*/ createWatchContractEvent({
+  abi: barberShopAbi,
+  address: barberShopAddress,
+})
+
+/**
+ * Wraps __{@link watchContractEvent}__ with `abi` set to __{@link barberShopAbi}__ and `eventName` set to `"AppointmentBooked"`
+ */
+export const watchBarberShopAppointmentBookedEvent =
+  /*#__PURE__*/ createWatchContractEvent({
+    abi: barberShopAbi,
+    address: barberShopAddress,
+    eventName: 'AppointmentBooked',
+  })
+
+/**
+ * Wraps __{@link watchContractEvent}__ with `abi` set to __{@link barberShopAbi}__ and `eventName` set to `"AppointmentPaid"`
+ */
+export const watchBarberShopAppointmentPaidEvent =
+  /*#__PURE__*/ createWatchContractEvent({
+    abi: barberShopAbi,
+    address: barberShopAddress,
+    eventName: 'AppointmentPaid',
+  })
+
+/**
+ * Wraps __{@link watchContractEvent}__ with `abi` set to __{@link barberShopAbi}__ and `eventName` set to `"ClientAdded"`
+ */
+export const watchBarberShopClientAddedEvent =
+  /*#__PURE__*/ createWatchContractEvent({
+    abi: barberShopAbi,
+    address: barberShopAddress,
+    eventName: 'ClientAdded',
+  })
+
+/**
+ * Wraps __{@link watchContractEvent}__ with `abi` set to __{@link barberShopAbi}__ and `eventName` set to `"ClientRemoved"`
+ */
+export const watchBarberShopClientRemovedEvent =
+  /*#__PURE__*/ createWatchContractEvent({
+    abi: barberShopAbi,
+    address: barberShopAddress,
+    eventName: 'ClientRemoved',
+  })
+
+/**
+ * Wraps __{@link watchContractEvent}__ with `abi` set to __{@link barberShopAbi}__ and `eventName` set to `"ClientUpdated"`
+ */
+export const watchBarberShopClientUpdatedEvent =
+  /*#__PURE__*/ createWatchContractEvent({
+    abi: barberShopAbi,
+    address: barberShopAddress,
+    eventName: 'ClientUpdated',
+  })
+
+/**
+ * Wraps __{@link watchContractEvent}__ with `abi` set to __{@link barberShopAbi}__ and `eventName` set to `"ServiceAdded"`
+ */
+export const watchBarberShopServiceAddedEvent =
+  /*#__PURE__*/ createWatchContractEvent({
+    abi: barberShopAbi,
+    address: barberShopAddress,
+    eventName: 'ServiceAdded',
+  })
+
+/**
+ * Wraps __{@link watchContractEvent}__ with `abi` set to __{@link barberShopAbi}__ and `eventName` set to `"StaffAdded"`
+ */
+export const watchBarberShopStaffAddedEvent =
+  /*#__PURE__*/ createWatchContractEvent({
+    abi: barberShopAbi,
+    address: barberShopAddress,
+    eventName: 'StaffAdded',
+  })
+
+/**
+ * Wraps __{@link watchContractEvent}__ with `abi` set to __{@link barberShopAbi}__ and `eventName` set to `"StaffRemoved"`
+ */
+export const watchBarberShopStaffRemovedEvent =
+  /*#__PURE__*/ createWatchContractEvent({
+    abi: barberShopAbi,
+    address: barberShopAddress,
+    eventName: 'StaffRemoved',
+  })
+
+/**
+ * Wraps __{@link watchContractEvent}__ with `abi` set to __{@link barberShopAbi}__ and `eventName` set to `"StaffUpdated"`
+ */
+export const watchBarberShopStaffUpdatedEvent =
+  /*#__PURE__*/ createWatchContractEvent({
     abi: barberShopAbi,
     address: barberShopAddress,
     eventName: 'StaffUpdated',
