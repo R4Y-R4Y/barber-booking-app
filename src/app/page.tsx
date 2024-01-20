@@ -1,8 +1,8 @@
-import { getServerSession } from "next-auth";
+"use client"
 import { redirect } from "next/navigation";
+import { useAccount } from "wagmi";
 
-export default async function Home() {
-  const session = await getServerSession();
-
-  session ? redirect("/dashboard") : redirect("/login");
+export default function Home() {
+  const { status } = useAccount() 
+  status == "connected" ? redirect("/dashboard") : redirect("/login");
 }
