@@ -20,7 +20,7 @@ const LoginForm = () => {
   
   const { connectors, connect, status, error } = useConnect({
     mutation:{
-      onSuccess: () => router.push("/"),
+      onSuccess: () => router.push("/dashboard"),
     }
   })
   const account = useAccount()
@@ -28,7 +28,8 @@ const LoginForm = () => {
   const connector = connectors[0]
   const router = useRouter()
 
-
+  
+  
   return (
     <>
       <div

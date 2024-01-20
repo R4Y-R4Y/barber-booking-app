@@ -1,9 +1,15 @@
-import * as React from "react";
+"use client"
 
 import Link from "next/link";
 import LoginForm from "./components/login-form";
+import { useAccount } from "wagmi";
+import { redirect } from "next/navigation";
 
 const Login = () => {
+  const account = useAccount()
+  if(account.status == "connected")
+      return redirect("/dashboard"); 
+
   return (
     <div>
       <h2 className="text-white text-3xl font-bold">Hello again</h2>
