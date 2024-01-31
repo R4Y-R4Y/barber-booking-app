@@ -205,47 +205,6 @@ export const barberShopAbi = [
     name: 'StaffUpdated',
   },
   {
-    constant: true,
-    stateMutability: 'view',
-    type: 'function',
-    inputs: [{ name: '', internalType: 'address', type: 'address' }],
-    name: 'clients',
-    outputs: [
-      { name: 'name', internalType: 'string', type: 'string' },
-      { name: 'phoneNumber', internalType: 'uint256', type: 'uint256' },
-    ],
-  },
-  {
-    constant: true,
-    stateMutability: 'view',
-    type: 'function',
-    inputs: [],
-    name: 'owner',
-    outputs: [{ name: '', internalType: 'address', type: 'address' }],
-  },
-  {
-    constant: true,
-    stateMutability: 'view',
-    type: 'function',
-    inputs: [{ name: '', internalType: 'uint256', type: 'uint256' }],
-    name: 'services',
-    outputs: [
-      { name: 'name', internalType: 'string', type: 'string' },
-      { name: 'staffId', internalType: 'address', type: 'address' },
-    ],
-  },
-  {
-    constant: true,
-    stateMutability: 'view',
-    type: 'function',
-    inputs: [{ name: '', internalType: 'address', type: 'address' }],
-    name: 'staff',
-    outputs: [
-      { name: 'name', internalType: 'string', type: 'string' },
-      { name: 'staffId', internalType: 'address', type: 'address' },
-    ],
-  },
-  {
     stateMutability: 'nonpayable',
     type: 'function',
     inputs: [
@@ -259,21 +218,19 @@ export const barberShopAbi = [
   {
     stateMutability: 'nonpayable',
     type: 'function',
-    inputs: [
-      { name: '_clientAddress', internalType: 'address', type: 'address' },
-      { name: '_newName', internalType: 'string', type: 'string' },
-      { name: '_newPhoneNumber', internalType: 'uint256', type: 'uint256' },
-    ],
-    name: 'updateClient',
+    inputs: [{ name: '_newOwner', internalType: 'address', type: 'address' }],
+    name: 'addOwner',
     outputs: [],
   },
   {
     stateMutability: 'nonpayable',
     type: 'function',
     inputs: [
-      { name: '_clientAddress', internalType: 'address', type: 'address' },
+      { name: '_serviceId', internalType: 'uint256', type: 'uint256' },
+      { name: '_name', internalType: 'string', type: 'string' },
+      { name: '_staffId', internalType: 'address', type: 'address' },
     ],
-    name: 'removeClient',
+    name: 'addService',
     outputs: [],
   },
   {
@@ -290,12 +247,48 @@ export const barberShopAbi = [
   {
     stateMutability: 'nonpayable',
     type: 'function',
-    inputs: [
-      { name: '_staffAddress', internalType: 'address', type: 'address' },
-      { name: '_newName', internalType: 'string', type: 'string' },
-      { name: '_newStaffId', internalType: 'address', type: 'address' },
+    inputs: [{ name: '_serviceId', internalType: 'uint256', type: 'uint256' }],
+    name: 'bookAppointment',
+    outputs: [],
+  },
+  {
+    stateMutability: 'view',
+    type: 'function',
+    inputs: [{ name: '', internalType: 'address', type: 'address' }],
+    name: 'clients',
+    outputs: [
+      { name: 'name', internalType: 'string', type: 'string' },
+      { name: 'phoneNumber', internalType: 'uint256', type: 'uint256' },
     ],
-    name: 'updateStaff',
+  },
+  {
+    stateMutability: 'view',
+    type: 'function',
+    inputs: [{ name: '_address', internalType: 'address', type: 'address' }],
+    name: 'isOwner',
+    outputs: [{ name: '', internalType: 'bool', type: 'bool' }],
+  },
+  {
+    stateMutability: 'view',
+    type: 'function',
+    inputs: [{ name: '', internalType: 'uint256', type: 'uint256' }],
+    name: 'owners',
+    outputs: [{ name: '', internalType: 'address', type: 'address' }],
+  },
+  {
+    stateMutability: 'payable',
+    type: 'function',
+    inputs: [{ name: '_serviceId', internalType: 'uint256', type: 'uint256' }],
+    name: 'payForAppointment',
+    outputs: [],
+  },
+  {
+    stateMutability: 'nonpayable',
+    type: 'function',
+    inputs: [
+      { name: '_clientAddress', internalType: 'address', type: 'address' },
+    ],
+    name: 'removeClient',
     outputs: [],
   },
   {
@@ -308,18 +301,48 @@ export const barberShopAbi = [
     outputs: [],
   },
   {
+    stateMutability: 'view',
+    type: 'function',
+    inputs: [{ name: '', internalType: 'uint256', type: 'uint256' }],
+    name: 'services',
+    outputs: [
+      { name: 'name', internalType: 'string', type: 'string' },
+      { name: 'staffId', internalType: 'address', type: 'address' },
+    ],
+  },
+  {
+    stateMutability: 'view',
+    type: 'function',
+    inputs: [{ name: '', internalType: 'address', type: 'address' }],
+    name: 'staff',
+    outputs: [
+      { name: 'name', internalType: 'string', type: 'string' },
+      { name: 'staffId', internalType: 'address', type: 'address' },
+    ],
+  },
+  {
     stateMutability: 'nonpayable',
     type: 'function',
     inputs: [
-      { name: '_serviceId', internalType: 'uint256', type: 'uint256' },
-      { name: '_name', internalType: 'string', type: 'string' },
-      { name: '_staffId', internalType: 'address', type: 'address' },
+      { name: '_clientAddress', internalType: 'address', type: 'address' },
+      { name: '_newName', internalType: 'string', type: 'string' },
+      { name: '_newPhoneNumber', internalType: 'uint256', type: 'uint256' },
     ],
-    name: 'addService',
+    name: 'updateClient',
     outputs: [],
   },
   {
-    constant: true,
+    stateMutability: 'nonpayable',
+    type: 'function',
+    inputs: [
+      { name: '_staffAddress', internalType: 'address', type: 'address' },
+      { name: '_newName', internalType: 'string', type: 'string' },
+      { name: '_newStaffId', internalType: 'address', type: 'address' },
+    ],
+    name: 'updateStaff',
+    outputs: [],
+  },
+  {
     stateMutability: 'view',
     type: 'function',
     inputs: [{ name: '_serviceId', internalType: 'uint256', type: 'uint256' }],
@@ -330,7 +353,6 @@ export const barberShopAbi = [
     ],
   },
   {
-    constant: true,
     stateMutability: 'view',
     type: 'function',
     inputs: [{ name: '_staffId', internalType: 'address', type: 'address' }],
@@ -339,21 +361,6 @@ export const barberShopAbi = [
       { name: 'staffName', internalType: 'string', type: 'string' },
       { name: 'staffId', internalType: 'address', type: 'address' },
     ],
-  },
-  {
-    stateMutability: 'nonpayable',
-    type: 'function',
-    inputs: [{ name: '_serviceId', internalType: 'uint256', type: 'uint256' }],
-    name: 'bookAppointment',
-    outputs: [],
-  },
-  {
-    payable: true,
-    stateMutability: 'payable',
-    type: 'function',
-    inputs: [{ name: '_serviceId', internalType: 'uint256', type: 'uint256' }],
-    name: 'payForAppointment',
-    outputs: [],
   },
 ] as const
 
@@ -387,12 +394,21 @@ export const useReadBarberShopClients = /*#__PURE__*/ createUseReadContract({
 })
 
 /**
- * Wraps __{@link useReadContract}__ with `abi` set to __{@link barberShopAbi}__ and `functionName` set to `"owner"`
+ * Wraps __{@link useReadContract}__ with `abi` set to __{@link barberShopAbi}__ and `functionName` set to `"isOwner"`
  */
-export const useReadBarberShopOwner = /*#__PURE__*/ createUseReadContract({
+export const useReadBarberShopIsOwner = /*#__PURE__*/ createUseReadContract({
   abi: barberShopAbi,
   address: barberShopAddress,
-  functionName: 'owner',
+  functionName: 'isOwner',
+})
+
+/**
+ * Wraps __{@link useReadContract}__ with `abi` set to __{@link barberShopAbi}__ and `functionName` set to `"owners"`
+ */
+export const useReadBarberShopOwners = /*#__PURE__*/ createUseReadContract({
+  abi: barberShopAbi,
+  address: barberShopAddress,
+  functionName: 'owners',
 })
 
 /**
@@ -449,53 +465,13 @@ export const useWriteBarberShopAddClient = /*#__PURE__*/ createUseWriteContract(
 )
 
 /**
- * Wraps __{@link useWriteContract}__ with `abi` set to __{@link barberShopAbi}__ and `functionName` set to `"updateClient"`
+ * Wraps __{@link useWriteContract}__ with `abi` set to __{@link barberShopAbi}__ and `functionName` set to `"addOwner"`
  */
-export const useWriteBarberShopUpdateClient =
-  /*#__PURE__*/ createUseWriteContract({
-    abi: barberShopAbi,
-    address: barberShopAddress,
-    functionName: 'updateClient',
-  })
-
-/**
- * Wraps __{@link useWriteContract}__ with `abi` set to __{@link barberShopAbi}__ and `functionName` set to `"removeClient"`
- */
-export const useWriteBarberShopRemoveClient =
-  /*#__PURE__*/ createUseWriteContract({
-    abi: barberShopAbi,
-    address: barberShopAddress,
-    functionName: 'removeClient',
-  })
-
-/**
- * Wraps __{@link useWriteContract}__ with `abi` set to __{@link barberShopAbi}__ and `functionName` set to `"addStaff"`
- */
-export const useWriteBarberShopAddStaff = /*#__PURE__*/ createUseWriteContract({
+export const useWriteBarberShopAddOwner = /*#__PURE__*/ createUseWriteContract({
   abi: barberShopAbi,
   address: barberShopAddress,
-  functionName: 'addStaff',
+  functionName: 'addOwner',
 })
-
-/**
- * Wraps __{@link useWriteContract}__ with `abi` set to __{@link barberShopAbi}__ and `functionName` set to `"updateStaff"`
- */
-export const useWriteBarberShopUpdateStaff =
-  /*#__PURE__*/ createUseWriteContract({
-    abi: barberShopAbi,
-    address: barberShopAddress,
-    functionName: 'updateStaff',
-  })
-
-/**
- * Wraps __{@link useWriteContract}__ with `abi` set to __{@link barberShopAbi}__ and `functionName` set to `"removeStaff"`
- */
-export const useWriteBarberShopRemoveStaff =
-  /*#__PURE__*/ createUseWriteContract({
-    abi: barberShopAbi,
-    address: barberShopAddress,
-    functionName: 'removeStaff',
-  })
 
 /**
  * Wraps __{@link useWriteContract}__ with `abi` set to __{@link barberShopAbi}__ and `functionName` set to `"addService"`
@@ -506,6 +482,15 @@ export const useWriteBarberShopAddService =
     address: barberShopAddress,
     functionName: 'addService',
   })
+
+/**
+ * Wraps __{@link useWriteContract}__ with `abi` set to __{@link barberShopAbi}__ and `functionName` set to `"addStaff"`
+ */
+export const useWriteBarberShopAddStaff = /*#__PURE__*/ createUseWriteContract({
+  abi: barberShopAbi,
+  address: barberShopAddress,
+  functionName: 'addStaff',
+})
 
 /**
  * Wraps __{@link useWriteContract}__ with `abi` set to __{@link barberShopAbi}__ and `functionName` set to `"bookAppointment"`
@@ -528,6 +513,46 @@ export const useWriteBarberShopPayForAppointment =
   })
 
 /**
+ * Wraps __{@link useWriteContract}__ with `abi` set to __{@link barberShopAbi}__ and `functionName` set to `"removeClient"`
+ */
+export const useWriteBarberShopRemoveClient =
+  /*#__PURE__*/ createUseWriteContract({
+    abi: barberShopAbi,
+    address: barberShopAddress,
+    functionName: 'removeClient',
+  })
+
+/**
+ * Wraps __{@link useWriteContract}__ with `abi` set to __{@link barberShopAbi}__ and `functionName` set to `"removeStaff"`
+ */
+export const useWriteBarberShopRemoveStaff =
+  /*#__PURE__*/ createUseWriteContract({
+    abi: barberShopAbi,
+    address: barberShopAddress,
+    functionName: 'removeStaff',
+  })
+
+/**
+ * Wraps __{@link useWriteContract}__ with `abi` set to __{@link barberShopAbi}__ and `functionName` set to `"updateClient"`
+ */
+export const useWriteBarberShopUpdateClient =
+  /*#__PURE__*/ createUseWriteContract({
+    abi: barberShopAbi,
+    address: barberShopAddress,
+    functionName: 'updateClient',
+  })
+
+/**
+ * Wraps __{@link useWriteContract}__ with `abi` set to __{@link barberShopAbi}__ and `functionName` set to `"updateStaff"`
+ */
+export const useWriteBarberShopUpdateStaff =
+  /*#__PURE__*/ createUseWriteContract({
+    abi: barberShopAbi,
+    address: barberShopAddress,
+    functionName: 'updateStaff',
+  })
+
+/**
  * Wraps __{@link useSimulateContract}__ with `abi` set to __{@link barberShopAbi}__
  */
 export const useSimulateBarberShop = /*#__PURE__*/ createUseSimulateContract({
@@ -546,53 +571,13 @@ export const useSimulateBarberShopAddClient =
   })
 
 /**
- * Wraps __{@link useSimulateContract}__ with `abi` set to __{@link barberShopAbi}__ and `functionName` set to `"updateClient"`
+ * Wraps __{@link useSimulateContract}__ with `abi` set to __{@link barberShopAbi}__ and `functionName` set to `"addOwner"`
  */
-export const useSimulateBarberShopUpdateClient =
+export const useSimulateBarberShopAddOwner =
   /*#__PURE__*/ createUseSimulateContract({
     abi: barberShopAbi,
     address: barberShopAddress,
-    functionName: 'updateClient',
-  })
-
-/**
- * Wraps __{@link useSimulateContract}__ with `abi` set to __{@link barberShopAbi}__ and `functionName` set to `"removeClient"`
- */
-export const useSimulateBarberShopRemoveClient =
-  /*#__PURE__*/ createUseSimulateContract({
-    abi: barberShopAbi,
-    address: barberShopAddress,
-    functionName: 'removeClient',
-  })
-
-/**
- * Wraps __{@link useSimulateContract}__ with `abi` set to __{@link barberShopAbi}__ and `functionName` set to `"addStaff"`
- */
-export const useSimulateBarberShopAddStaff =
-  /*#__PURE__*/ createUseSimulateContract({
-    abi: barberShopAbi,
-    address: barberShopAddress,
-    functionName: 'addStaff',
-  })
-
-/**
- * Wraps __{@link useSimulateContract}__ with `abi` set to __{@link barberShopAbi}__ and `functionName` set to `"updateStaff"`
- */
-export const useSimulateBarberShopUpdateStaff =
-  /*#__PURE__*/ createUseSimulateContract({
-    abi: barberShopAbi,
-    address: barberShopAddress,
-    functionName: 'updateStaff',
-  })
-
-/**
- * Wraps __{@link useSimulateContract}__ with `abi` set to __{@link barberShopAbi}__ and `functionName` set to `"removeStaff"`
- */
-export const useSimulateBarberShopRemoveStaff =
-  /*#__PURE__*/ createUseSimulateContract({
-    abi: barberShopAbi,
-    address: barberShopAddress,
-    functionName: 'removeStaff',
+    functionName: 'addOwner',
   })
 
 /**
@@ -603,6 +588,16 @@ export const useSimulateBarberShopAddService =
     abi: barberShopAbi,
     address: barberShopAddress,
     functionName: 'addService',
+  })
+
+/**
+ * Wraps __{@link useSimulateContract}__ with `abi` set to __{@link barberShopAbi}__ and `functionName` set to `"addStaff"`
+ */
+export const useSimulateBarberShopAddStaff =
+  /*#__PURE__*/ createUseSimulateContract({
+    abi: barberShopAbi,
+    address: barberShopAddress,
+    functionName: 'addStaff',
   })
 
 /**
@@ -623,6 +618,46 @@ export const useSimulateBarberShopPayForAppointment =
     abi: barberShopAbi,
     address: barberShopAddress,
     functionName: 'payForAppointment',
+  })
+
+/**
+ * Wraps __{@link useSimulateContract}__ with `abi` set to __{@link barberShopAbi}__ and `functionName` set to `"removeClient"`
+ */
+export const useSimulateBarberShopRemoveClient =
+  /*#__PURE__*/ createUseSimulateContract({
+    abi: barberShopAbi,
+    address: barberShopAddress,
+    functionName: 'removeClient',
+  })
+
+/**
+ * Wraps __{@link useSimulateContract}__ with `abi` set to __{@link barberShopAbi}__ and `functionName` set to `"removeStaff"`
+ */
+export const useSimulateBarberShopRemoveStaff =
+  /*#__PURE__*/ createUseSimulateContract({
+    abi: barberShopAbi,
+    address: barberShopAddress,
+    functionName: 'removeStaff',
+  })
+
+/**
+ * Wraps __{@link useSimulateContract}__ with `abi` set to __{@link barberShopAbi}__ and `functionName` set to `"updateClient"`
+ */
+export const useSimulateBarberShopUpdateClient =
+  /*#__PURE__*/ createUseSimulateContract({
+    abi: barberShopAbi,
+    address: barberShopAddress,
+    functionName: 'updateClient',
+  })
+
+/**
+ * Wraps __{@link useSimulateContract}__ with `abi` set to __{@link barberShopAbi}__ and `functionName` set to `"updateStaff"`
+ */
+export const useSimulateBarberShopUpdateStaff =
+  /*#__PURE__*/ createUseSimulateContract({
+    abi: barberShopAbi,
+    address: barberShopAddress,
+    functionName: 'updateStaff',
   })
 
 /**
@@ -746,12 +781,21 @@ export const readBarberShopClients = /*#__PURE__*/ createReadContract({
 })
 
 /**
- * Wraps __{@link readContract}__ with `abi` set to __{@link barberShopAbi}__ and `functionName` set to `"owner"`
+ * Wraps __{@link readContract}__ with `abi` set to __{@link barberShopAbi}__ and `functionName` set to `"isOwner"`
  */
-export const readBarberShopOwner = /*#__PURE__*/ createReadContract({
+export const readBarberShopIsOwner = /*#__PURE__*/ createReadContract({
   abi: barberShopAbi,
   address: barberShopAddress,
-  functionName: 'owner',
+  functionName: 'isOwner',
+})
+
+/**
+ * Wraps __{@link readContract}__ with `abi` set to __{@link barberShopAbi}__ and `functionName` set to `"owners"`
+ */
+export const readBarberShopOwners = /*#__PURE__*/ createReadContract({
+  abi: barberShopAbi,
+  address: barberShopAddress,
+  functionName: 'owners',
 })
 
 /**
@@ -808,48 +852,12 @@ export const writeBarberShopAddClient = /*#__PURE__*/ createWriteContract({
 })
 
 /**
- * Wraps __{@link writeContract}__ with `abi` set to __{@link barberShopAbi}__ and `functionName` set to `"updateClient"`
+ * Wraps __{@link writeContract}__ with `abi` set to __{@link barberShopAbi}__ and `functionName` set to `"addOwner"`
  */
-export const writeBarberShopUpdateClient = /*#__PURE__*/ createWriteContract({
+export const writeBarberShopAddOwner = /*#__PURE__*/ createWriteContract({
   abi: barberShopAbi,
   address: barberShopAddress,
-  functionName: 'updateClient',
-})
-
-/**
- * Wraps __{@link writeContract}__ with `abi` set to __{@link barberShopAbi}__ and `functionName` set to `"removeClient"`
- */
-export const writeBarberShopRemoveClient = /*#__PURE__*/ createWriteContract({
-  abi: barberShopAbi,
-  address: barberShopAddress,
-  functionName: 'removeClient',
-})
-
-/**
- * Wraps __{@link writeContract}__ with `abi` set to __{@link barberShopAbi}__ and `functionName` set to `"addStaff"`
- */
-export const writeBarberShopAddStaff = /*#__PURE__*/ createWriteContract({
-  abi: barberShopAbi,
-  address: barberShopAddress,
-  functionName: 'addStaff',
-})
-
-/**
- * Wraps __{@link writeContract}__ with `abi` set to __{@link barberShopAbi}__ and `functionName` set to `"updateStaff"`
- */
-export const writeBarberShopUpdateStaff = /*#__PURE__*/ createWriteContract({
-  abi: barberShopAbi,
-  address: barberShopAddress,
-  functionName: 'updateStaff',
-})
-
-/**
- * Wraps __{@link writeContract}__ with `abi` set to __{@link barberShopAbi}__ and `functionName` set to `"removeStaff"`
- */
-export const writeBarberShopRemoveStaff = /*#__PURE__*/ createWriteContract({
-  abi: barberShopAbi,
-  address: barberShopAddress,
-  functionName: 'removeStaff',
+  functionName: 'addOwner',
 })
 
 /**
@@ -859,6 +867,15 @@ export const writeBarberShopAddService = /*#__PURE__*/ createWriteContract({
   abi: barberShopAbi,
   address: barberShopAddress,
   functionName: 'addService',
+})
+
+/**
+ * Wraps __{@link writeContract}__ with `abi` set to __{@link barberShopAbi}__ and `functionName` set to `"addStaff"`
+ */
+export const writeBarberShopAddStaff = /*#__PURE__*/ createWriteContract({
+  abi: barberShopAbi,
+  address: barberShopAddress,
+  functionName: 'addStaff',
 })
 
 /**
@@ -883,6 +900,42 @@ export const writeBarberShopPayForAppointment =
   })
 
 /**
+ * Wraps __{@link writeContract}__ with `abi` set to __{@link barberShopAbi}__ and `functionName` set to `"removeClient"`
+ */
+export const writeBarberShopRemoveClient = /*#__PURE__*/ createWriteContract({
+  abi: barberShopAbi,
+  address: barberShopAddress,
+  functionName: 'removeClient',
+})
+
+/**
+ * Wraps __{@link writeContract}__ with `abi` set to __{@link barberShopAbi}__ and `functionName` set to `"removeStaff"`
+ */
+export const writeBarberShopRemoveStaff = /*#__PURE__*/ createWriteContract({
+  abi: barberShopAbi,
+  address: barberShopAddress,
+  functionName: 'removeStaff',
+})
+
+/**
+ * Wraps __{@link writeContract}__ with `abi` set to __{@link barberShopAbi}__ and `functionName` set to `"updateClient"`
+ */
+export const writeBarberShopUpdateClient = /*#__PURE__*/ createWriteContract({
+  abi: barberShopAbi,
+  address: barberShopAddress,
+  functionName: 'updateClient',
+})
+
+/**
+ * Wraps __{@link writeContract}__ with `abi` set to __{@link barberShopAbi}__ and `functionName` set to `"updateStaff"`
+ */
+export const writeBarberShopUpdateStaff = /*#__PURE__*/ createWriteContract({
+  abi: barberShopAbi,
+  address: barberShopAddress,
+  functionName: 'updateStaff',
+})
+
+/**
  * Wraps __{@link simulateContract}__ with `abi` set to __{@link barberShopAbi}__
  */
 export const simulateBarberShop = /*#__PURE__*/ createSimulateContract({
@@ -898,53 +951,13 @@ export const simulateBarberShopAddClient = /*#__PURE__*/ createSimulateContract(
 )
 
 /**
- * Wraps __{@link simulateContract}__ with `abi` set to __{@link barberShopAbi}__ and `functionName` set to `"updateClient"`
+ * Wraps __{@link simulateContract}__ with `abi` set to __{@link barberShopAbi}__ and `functionName` set to `"addOwner"`
  */
-export const simulateBarberShopUpdateClient =
-  /*#__PURE__*/ createSimulateContract({
-    abi: barberShopAbi,
-    address: barberShopAddress,
-    functionName: 'updateClient',
-  })
-
-/**
- * Wraps __{@link simulateContract}__ with `abi` set to __{@link barberShopAbi}__ and `functionName` set to `"removeClient"`
- */
-export const simulateBarberShopRemoveClient =
-  /*#__PURE__*/ createSimulateContract({
-    abi: barberShopAbi,
-    address: barberShopAddress,
-    functionName: 'removeClient',
-  })
-
-/**
- * Wraps __{@link simulateContract}__ with `abi` set to __{@link barberShopAbi}__ and `functionName` set to `"addStaff"`
- */
-export const simulateBarberShopAddStaff = /*#__PURE__*/ createSimulateContract({
+export const simulateBarberShopAddOwner = /*#__PURE__*/ createSimulateContract({
   abi: barberShopAbi,
   address: barberShopAddress,
-  functionName: 'addStaff',
+  functionName: 'addOwner',
 })
-
-/**
- * Wraps __{@link simulateContract}__ with `abi` set to __{@link barberShopAbi}__ and `functionName` set to `"updateStaff"`
- */
-export const simulateBarberShopUpdateStaff =
-  /*#__PURE__*/ createSimulateContract({
-    abi: barberShopAbi,
-    address: barberShopAddress,
-    functionName: 'updateStaff',
-  })
-
-/**
- * Wraps __{@link simulateContract}__ with `abi` set to __{@link barberShopAbi}__ and `functionName` set to `"removeStaff"`
- */
-export const simulateBarberShopRemoveStaff =
-  /*#__PURE__*/ createSimulateContract({
-    abi: barberShopAbi,
-    address: barberShopAddress,
-    functionName: 'removeStaff',
-  })
 
 /**
  * Wraps __{@link simulateContract}__ with `abi` set to __{@link barberShopAbi}__ and `functionName` set to `"addService"`
@@ -955,6 +968,15 @@ export const simulateBarberShopAddService =
     address: barberShopAddress,
     functionName: 'addService',
   })
+
+/**
+ * Wraps __{@link simulateContract}__ with `abi` set to __{@link barberShopAbi}__ and `functionName` set to `"addStaff"`
+ */
+export const simulateBarberShopAddStaff = /*#__PURE__*/ createSimulateContract({
+  abi: barberShopAbi,
+  address: barberShopAddress,
+  functionName: 'addStaff',
+})
 
 /**
  * Wraps __{@link simulateContract}__ with `abi` set to __{@link barberShopAbi}__ and `functionName` set to `"bookAppointment"`
@@ -974,6 +996,46 @@ export const simulateBarberShopPayForAppointment =
     abi: barberShopAbi,
     address: barberShopAddress,
     functionName: 'payForAppointment',
+  })
+
+/**
+ * Wraps __{@link simulateContract}__ with `abi` set to __{@link barberShopAbi}__ and `functionName` set to `"removeClient"`
+ */
+export const simulateBarberShopRemoveClient =
+  /*#__PURE__*/ createSimulateContract({
+    abi: barberShopAbi,
+    address: barberShopAddress,
+    functionName: 'removeClient',
+  })
+
+/**
+ * Wraps __{@link simulateContract}__ with `abi` set to __{@link barberShopAbi}__ and `functionName` set to `"removeStaff"`
+ */
+export const simulateBarberShopRemoveStaff =
+  /*#__PURE__*/ createSimulateContract({
+    abi: barberShopAbi,
+    address: barberShopAddress,
+    functionName: 'removeStaff',
+  })
+
+/**
+ * Wraps __{@link simulateContract}__ with `abi` set to __{@link barberShopAbi}__ and `functionName` set to `"updateClient"`
+ */
+export const simulateBarberShopUpdateClient =
+  /*#__PURE__*/ createSimulateContract({
+    abi: barberShopAbi,
+    address: barberShopAddress,
+    functionName: 'updateClient',
+  })
+
+/**
+ * Wraps __{@link simulateContract}__ with `abi` set to __{@link barberShopAbi}__ and `functionName` set to `"updateStaff"`
+ */
+export const simulateBarberShopUpdateStaff =
+  /*#__PURE__*/ createSimulateContract({
+    abi: barberShopAbi,
+    address: barberShopAddress,
+    functionName: 'updateStaff',
   })
 
 /**
