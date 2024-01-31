@@ -21,8 +21,10 @@ const LoginForm = () => {
   const { connectors, connect, status, error } = useConnect({
     mutation:{
       onSuccess: () => router.push("/dashboard"),
+      
     }
   })
+  console.log("login",status)
   const account = useAccount()
   const {disconnect} = useDisconnect()
   const connector = connectors[0]
@@ -38,7 +40,7 @@ const LoginForm = () => {
         {/* <div>{renderItems}</div> */}
         <Button disabled={status == "loading"} onClick={() => connect({connector})} type="submit">
           {status == "loading" && <Loader2 className="mr-2 h-4 w-4 animate-spin" />}
-          Login with {connector.name} : {account.status}
+          Login with  : {account.status}
         </Button>
         {error && (
           <Alert variant="destructive" className="mt-5">

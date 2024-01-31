@@ -20,10 +20,8 @@ const Dashboard = async ({
       case Role.CLIENT:
         return <ClientDashboard city={city} />;
       case Role.SALON_OWNER:
-        return <BusinessDashboard />;
+        return <Business  Dashboard />;
 
-      default:
-        return redirect("/login");
     }
   };
 
