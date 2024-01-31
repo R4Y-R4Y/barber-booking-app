@@ -365,7 +365,7 @@ export const barberShopAbi = [
 ] as const
 
 export const barberShopAddress =
-  '0x5b97753C32aeDD0F6e9899AA8E04F8Fe92c64c2B' as const
+  '0x0FD9fDa9D6844bC0B27158Ddd33Fe0f8D854af79' as const
 
 export const barberShopConfig = {
   address: barberShopAddress,
