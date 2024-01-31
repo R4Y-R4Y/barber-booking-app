@@ -7,7 +7,7 @@ import { AlertCircle } from "lucide-react";
 import { Button } from "components/ui/button";
 import { Loader2 } from "lucide-react";
 import { useRouter } from "next/navigation";
-import { useAccount, useConnect, useDisconnect } from "wagmi";
+import { useAccount, useConnect } from "wagmi";
 import { BaseError } from "viem";
 
 const styles = {
@@ -26,7 +26,6 @@ const LoginForm = () => {
   })
   console.log("login",status)
   const account = useAccount()
-  const {disconnect} = useDisconnect()
   const connector = connectors[0]
   const router = useRouter()
 

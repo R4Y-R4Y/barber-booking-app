@@ -20,7 +20,7 @@ const Dashboard = async ({
       case Role.CLIENT:
         return <ClientDashboard city={city} />;
       case Role.SALON_OWNER:
-        return <Business  Dashboard />;
+        return <BusinessDashboard />;
 
     }
   };
